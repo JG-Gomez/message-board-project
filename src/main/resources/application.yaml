@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: message-board
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5436/message-board
+    username: <messageBoard>
+    password: <password>
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration

@@ -1,0 +1,11 @@
+services:
+  postgres-db:
+    container_name: message-board
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: <messageBoard>
+      POSTGRES_PASSWORD: <password>
+      POSTGRES_DB: <message-board>
+    ports:
+      - "5436:5432"
