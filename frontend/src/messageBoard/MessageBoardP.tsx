@@ -1,13 +1,11 @@
-
-
 const MessageBoardP = () => {
 
-    return(
+    return (
 
         <>
-        <h1>
-            This is test header
-        </h1>
+            <h1>
+                This is test header
+            </h1>
         </>
     )
 }

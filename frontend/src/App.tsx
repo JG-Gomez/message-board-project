@@ -1,12 +1,16 @@
-
+import MessageBoardP from "./messageBoard/MessageBoardP";
 
 const App = () => {
 
-    return(
+    return (
 
-        <h1>
-            Hello
-        </h1>
+        <>
+        <MessageBoardP>
+            <h1>
+                Hello
+            </h1>
+        </MessageBoardP>
+        </>
     )
 }
 

@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5436/message-board
-    username: <messageBoard>
-    password: <password>
+    username: messageBoard
+    password: password
 
   jpa:
     generate-ddl: false

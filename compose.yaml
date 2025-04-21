@@ -4,8 +4,9 @@ services:
     image: postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: <messageBoard>
-      POSTGRES_PASSWORD: <password>
-      POSTGRES_DB: <message-board>
+      POSTGRES_USER: messageBoard
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: message-board
+      POSTGRES_HOST_AUTH_METHOD: password
     ports:
       - "5436:5432"
