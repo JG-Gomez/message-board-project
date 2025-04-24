@@ -1,17 +1,9 @@
 package com.bridge.example.messageboard.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.Instant;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="messageboard_messages")
 
@@ -26,4 +18,43 @@ public class MBMessage {
     private Double userRating;
 
     private Instant createdAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public MBMessage setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public MBMessage setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public Double getUserRating() {
+        return userRating;
+    }
+
+    public Double setUserRating(Double userRating) {
+        this.userRating = userRating;
+        return userRating;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+        return createdAt;
+    }
+
+
 }
+

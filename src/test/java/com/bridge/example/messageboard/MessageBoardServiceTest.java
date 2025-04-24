@@ -9,6 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +26,7 @@ public class MessageBoardServiceTest {
     MessageBoardService messageBoardService;
 
     private MBMessage testMessage;
+    List<MBMessage> messages;
 
     @BeforeEach
     void setUp() {
@@ -32,6 +35,9 @@ public class MessageBoardServiceTest {
         testMessage = new MBMessage();
         testMessage.setId(1L);
         testMessage.setMessage("This is a test");
+        testMessage.setUserRating(5.0);
+        testMessage.setCreatedAt(Instant.now());
+        messages = new ArrayList<>(List.of(testMessage));
     }
 
     @Test
@@ -42,8 +48,9 @@ public class MessageBoardServiceTest {
         List<MBMessage> result = messageBoardService.getAllItems();
 
         assertEquals(1, result.size());
-//        assertThat(result).isEqualTo(1);
         assertEquals("This is a test", result.get(0).getMessage());
+        assertThat(result).isEqualTo(5.0);
+//        assertThat() COME BACK TO ADD RATINGS AND INSTANTS
         verify (messageBoardRepository, times(1)).findAll();
     }
 
@@ -78,5 +85,14 @@ public class MessageBoardServiceTest {
 
         assertThat(result).isEqualTo("This is the updated test message");
         verify(messageBoardRepository).save(testMessage);
+    }
+
+    @Test
+    void deleteMessageById() {
+        doNothing().when(messageBoardRepository).deleteById(1L);
+
+        messageBoardService.deleteMBMessageById(1L);
+
+        verify(messageBoardRepository, times(1)).deleteById(1L);
     }
 }

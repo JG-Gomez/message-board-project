@@ -2,16 +2,18 @@ package com.bridge.example.messageboard.service;
 
 import com.bridge.example.messageboard.entity.MBMessage;
 import com.bridge.example.messageboard.repository.MessageBoardRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-@AllArgsConstructor
 @Service
 
 public class MessageBoardService {
 
     private final MessageBoardRepository messageBoardRepository;
+
+    public MessageBoardService(MessageBoardRepository messageBoardRepository) {
+        this.messageBoardRepository = messageBoardRepository;
+    }
 
     public List<MBMessage> getAllItems() {
         return messageBoardRepository.findAll();

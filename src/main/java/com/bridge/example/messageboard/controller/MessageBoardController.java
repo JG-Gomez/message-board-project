@@ -3,7 +3,6 @@ package com.bridge.example.messageboard.controller;
 
 import com.bridge.example.messageboard.entity.MBMessage;
 import com.bridge.example.messageboard.service.MessageBoardService;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,15 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin
-@AllArgsConstructor
-@RestController
-@RequestMapping
 
+@RestController
+@RequestMapping("/api/messageBoard")
 public class MessageBoardController {
 
     private final MessageBoardService messageBoardService;
 
-    @GetMapping
+    public MessageBoardController(MessageBoardService messageBoardService) {
+
+        this.messageBoardService = messageBoardService;
+
+    }
+
+    @GetMapping("/getAll")
     public ResponseEntity<List<MBMessage>> getAllItems() {
         List<MBMessage> message = messageBoardService.getAllItems();
         return ResponseEntity.ok(message);
@@ -31,7 +35,7 @@ public class MessageBoardController {
         return ResponseEntity.ok(specificMessage);
     }
 
-    @PostMapping
+    @PostMapping("/message")
     public ResponseEntity<MBMessage> createMessage(@RequestBody MBMessage message) {
         MBMessage newMessage = messageBoardService.createMessageBoardMessage(message);
         return new ResponseEntity<>(newMessage, HttpStatus.CREATED);
@@ -48,6 +52,5 @@ public class MessageBoardController {
         messageBoardService.deleteMBMessageById(Id);
         return ResponseEntity.ok("Message Deleted");
     }
-
 
 }
